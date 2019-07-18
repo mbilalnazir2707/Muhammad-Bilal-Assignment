@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2019 at 05:32 AM
+-- Generation Time: Jul 18, 2019 at 10:09 AM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -22,18 +22,6 @@ SET time_zone = "+00:00";
 -- Database: `phpb6`
 --
 
--- --------------------------------------------------------
-
---
--- Table structure for table `login`
---
-
-CREATE TABLE `login` (
-  `Id` int(10) NOT NULL,
-  `UserName` varchar(40) NOT NULL,
-  `Password` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `login`
 --
@@ -41,62 +29,60 @@ CREATE TABLE `login` (
 INSERT INTO `login` (`Id`, `UserName`, `Password`) VALUES
 (1, 'Admin', '12345');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `person`
---
-
-CREATE TABLE `person` (
-  `Id` int(10) NOT NULL,
-  `First_Name` varchar(40) NOT NULL,
-  `Last_Name` varchar(40) NOT NULL,
-  `Email` varchar(40) NOT NULL,
-  `Password` varchar(32) NOT NULL,
-  `Address` varchar(80) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `person`
 --
 
 INSERT INTO `person` (`Id`, `First_Name`, `Last_Name`, `Email`, `Password`, `Address`) VALUES
-(1, 'Bilal Nazir', 'nazir', 'bilal@yahoo.com', 'password', 'address'),
+(1, 'Bilal Nazir', 'nazir', 'bilal@yahoo.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Lahore'),
 (6, 'usman', 'nazir', 'usman@gmail.com', '1234', 'Daroghawala'),
-(8, 'hamza', 'zafar', 'hamza1@gamil.com', '1234', 'sialkot'),
-(10, 'sarmad', 'khan', 'sarmad@yahoo.com', '12345', 'mughalpura');
+(11, 'hamza', 'zafar', 'hamza1@gamil.com', '8950259507cd8ce2a99f8b94674f2b77', 'sialkot'),
+(12, 'usman', 'nazir', 'usmannazir@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Daroghawala');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) NOT NULL COMMENT '1',
+  `name` varchar(40) NOT NULL,
+  `pass` char(32) NOT NULL,
+  `email` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `pass`, `email`) VALUES
+(1, 'Bilal', '1234', 'bilal@yahoo.com'),
+(3, 'usman', 'abcd', 'usman@yahoo.com'),
+(6, 'hamza', 'efgh', 'hamza@hotmail.com'),
+(7, 'sarmad', '123456', 'sarmad@gamil.com'),
+(8, 'asad', '1234', 'asad@yahoo.com'),
+(9, 'adil', '123456', 'adil@yahoo.com');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `login`
+-- Indexes for table `users`
 --
-ALTER TABLE `login`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `person`
---
-ALTER TABLE `person`
-  ADD PRIMARY KEY (`Id`);
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `login`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `login`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `person`
---
-ALTER TABLE `person`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+ALTER TABLE `users`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '1', AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
