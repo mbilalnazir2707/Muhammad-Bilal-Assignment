@@ -2,7 +2,7 @@
 <?php
 session_start();
 error_reporting(0);
-$uname = $_SESSION['user_name'];
+$uname = $_SESSION['email'];
 if($uname==true)
 {
 	$conn = new mysqli('localhost','root','','phpb6');
@@ -117,6 +117,7 @@ if($uname==true)
 
 			else
 			{
+				$password = md5($password);
 				$query = "Update person SET First_Name='$first_name',Last_Name='$last_name',Email='$email',Password='$password',Address='$address' where Id='$ID'";
 				if(mysqli_query($conn,$query))
 				{

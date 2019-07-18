@@ -2,7 +2,7 @@
 <?php
 session_start();
 error_reporting(0);
-$uname = $_SESSION['user_name'];
+$uname = $_SESSION['email'];
 if($uname==true)
 {
 	$conn = new mysqli('localhost','root','','phpb6');

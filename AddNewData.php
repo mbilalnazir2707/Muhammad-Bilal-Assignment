@@ -2,7 +2,8 @@
 <?php
 session_start();
 error_reporting(0);
-$uname = $_SESSION['user_name'];
+
+$uname = $_SESSION['email'];
 if($uname==true)
 {
 	if(isset($_POST['submit']))
@@ -95,6 +96,7 @@ if($uname==true)
 
 			else
 			{
+				$password = md5($password);
 				$stmt = $conn->prepare("insert into person(Id,First_Name,Last_Name,Email,Password,Address) values (null,?,?,?,?,?)");
 				$stmt->bind_param("sssss",$first_name,$last_name,$email,$password,$address);
 				$stmt->execute();

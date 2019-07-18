@@ -5,15 +5,15 @@ if(isset($_POST['Login']))
 {
 
 	$conn = new mysqli('localhost','root','','phpb6');
-	$username = trim($_POST['username']);
+	$email = trim($_POST['email']);
 	$password = trim($_POST['password']);
-	if(isset($_POST['username']) && $_POST['username'] != '' )
+	if(isset($_POST['email']) && $_POST['email'] != '' )
 	{
-		$username = $_POST['username'];
+		$email = $_POST['email'];
 	}
 	else
 	{
-		$error[] = 'USer Name is missing';
+		$error[] = 'Email is missing';
 	}
 	if(isset($_POST['password']) && $_POST['password'] != '' )
 	{
@@ -44,14 +44,14 @@ if(isset($_POST['Login']))
 
 		else
 		{
-			
-			$query = "select * from login where UserName='$username' AND Password='$password' limit 1";
+			$password = md5($password);
+			$query = "select * from person where Email='$email' AND Password='$password' limit 1";
 			$data = mysqli_query($conn,$query);
 			
 			$countrow = mysqli_num_rows($data);
 			if($countrow == 1)
 			{
-				$_SESSION['user_name'] = $username;
+				$_SESSION['email'] = $email;
 				header('location:showData.php');
 			}
 
@@ -71,11 +71,11 @@ if(isset($_POST['Login']))
 
 <form method = "POST" >
 
-	User Name :
-	<input type = "text" name = "username" value = "<?php
-	if(isset($_POST['username']) && $_POST['username'])
+	Email :
+	<input type = "text" name = "email" value = "<?php
+	if(isset($_POST['email']) && $_POST['email'])
 	{
-		echo trim($_POST['username']);
+		echo trim($_POST['email']);
 	}
 	?>"><br/>
 	Password:
